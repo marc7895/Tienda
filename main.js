@@ -127,9 +127,9 @@ function rayCasting() {
         
         const object = intersect.object;
         
-        while (object.name != "Renault" || "F1" || "Peugeot"){
-          object = object.parent
-        }
+        /*while (object.parent.name != "Renault" || object.name !=  "F1" ||object.name != "Peugeot"){
+
+        }*/
         
         console.log(object)
         if (!object.originalScale) object.originalScale = object.scale.clone();
