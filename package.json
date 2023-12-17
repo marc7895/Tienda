@@ -3,15 +3,19 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://marc7895.github.io/Tienda/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "vite build",
+    "deploy": "gh-pages -d dist "
   },
   "devDependencies": {
-    "vite": "^4.5.0"
+    "vite": "^4.5.1"
   },
   "dependencies": {
+    "gh-pages": "^6.1.0",
     "three": "^0.158.0"
   }
 }
