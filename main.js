@@ -30,12 +30,12 @@ objects.push(cubo);
 const sizes = { width: window.innerWidth, height: window.innerHeight }
 
 //PLA
-const planeGeo = new THREE.PlaneGeometry(10, 10);
-const planeMat = new THREE.MeshBasicMaterial({ color: 0xff0000 })
+const planeGeo = new THREE.PlaneGeometry(20, 20);
+const planeMat = new THREE.MeshBasicMaterial({ color: 0xba8b09 })
 const plane = new THREE.Mesh(planeGeo, planeMat);
 plane.receiveShadow = true;
 plane.rotation.x = Math.PI * -0.5;
-//scene.add(plane);
+scene.add(plane);
 
 //LLUM
 const llum = new THREE.AmbientLight(0XFFFFFF, 1)
@@ -131,16 +131,16 @@ function rayCasting() {
 
         }*/
         
-        console.log(object)
+        /*console.log(object)
         if (!object.originalScale) object.originalScale = object.scale.clone();
         object.scale.x = 2 * object.originalScale.x;
         object.scale.y = 2 * object.originalScale.y;
         object.scale.z = 2 * object.originalScale.z;
-        
+        */
     }
 
     //No intersecciona vuelve al tamaño original
-    for (const object of objects) {
+    /*for (const object of objects) {
         if (!intersects.find((intersect) => intersect.object === object)) {
             if (object.originalScale) {
                 object.scale.x = object.originalScale.x;
@@ -148,7 +148,7 @@ function rayCasting() {
                 object.scale.z = object.originalScale.z;
             }
         }
-    }
+    }*/
 
 }
 
