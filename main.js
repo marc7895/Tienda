@@ -5,8 +5,6 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import './style.css'
 
 
-
-
 //Instanciem el loader de models GLTF
 const loader = new GLTFLoader();
 
@@ -20,6 +18,10 @@ const mouse = new THREE.Vector2();
 
 const scene = new THREE.Scene();
 
+
+
+
+
 const geometry = new THREE.BoxGeometry(1, 1, 1)
 const material = new THREE.MeshBasicMaterial({ color: 0xffffff })
 const cubo = new THREE.Mesh(geometry, material)
@@ -27,6 +29,7 @@ cubo.position.y = 10
 scene.add(cubo);
 objects.push(cubo);
 
+//Mantener el tamaño de la ventana 
 const sizes = { width: window.innerWidth, height: window.innerHeight }
 
 //PLA
@@ -59,7 +62,7 @@ const raycaster = new THREE.Raycaster();
 //CARREGARMODELS 3D
 let F1Car = null;
 loadModel(
-  "Models/ayrton_senna_f1_car_mclaren/scene.gltf",
+  "Models/ayrton_senna_f1_car_mclaren/scene.glb",
   F1Car,
   new THREE.Vector3(-4, 1, 0),
   new THREE.Vector3(0.06,0.06,0.06),
@@ -81,7 +84,7 @@ loadModel(
 
 let P206 = null;
 loadModel(
-  "Models/206/scene.gltf",
+  "Models/206/scene.glb",
   P206,
   new THREE.Vector3(4, 0, 0),
   new THREE.Vector3(1,1,1),
@@ -131,8 +134,8 @@ function rayCasting() {
 
         }*/
         
-        /*console.log(object)
-        if (!object.originalScale) object.originalScale = object.scale.clone();
+        console.log(object)
+        /*if (!object.originalScale) object.originalScale = object.scale.clone();
         object.scale.x = 2 * object.originalScale.x;
         object.scale.y = 2 * object.originalScale.y;
         object.scale.z = 2 * object.originalScale.z;
@@ -152,11 +155,26 @@ function rayCasting() {
 
 }
 
+//Event que detecta el moviment del mouse
 window.addEventListener("mousemove", (event) => {
     mouse.x = (event.clientX / sizes.width) * 2 - 1;
     mouse.y = -(event.clientY / sizes.height) * 2 + 1;
     //console.log(mouse)
 });
+
+//Evento que detecta el cambio de tamaño de la ventana
+
+window.addEventListener('resize', () =>
+{
+    // Update sizes
+    sizes.width = window.innerWidth
+    sizes.height = window.innerHeight
+    camera.aspect = sizes.width / sizes.height
+    camera.updateProjectionMatrix()
+    renderer.setSize(sizes.width, sizes.height)
+})
+
+
 
 function loadModel(path, object3d, position, scale, rotation ,systemToAdd, name) {
     //Carregam el fitxer
